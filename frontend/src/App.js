@@ -1,11 +1,18 @@
 import './App.css';
 import React, { useState } from 'react';
-import ReactModal from 'react-modal';
+import Popup from './components/Popup.js';
+
 
 function App() {
   var username = "";
   var password = "";
   const [isOpen, setIsOpen] = useState(false);
+
+
+
+  function newPage() {
+
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,15 +23,17 @@ function App() {
     username = data.username;
     password = data.password;
     var userCorrect = checkPassword(username, password);
+    
     if (userCorrect) {
+      newPage();
 
     } else {
-
+      setIsOpen(true);
     }
   }
 
   function checkPassword(u, p) {
-    return false;
+    return true;
   }
    
 
@@ -51,6 +60,10 @@ function App() {
           <button type="submit">Log in</button>
         </form>
       </div>
+
+      <Popup trigger={isOpen} setTrigger= {setIsOpen}>
+        <h3>Login Failed</h3>
+      </Popup>
 
     </div>
   );

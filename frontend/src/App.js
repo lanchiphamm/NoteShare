@@ -1,9 +1,11 @@
 import './App.css';
-
+import React, { useState } from 'react';
+import ReactModal from 'react-modal';
 
 function App() {
   var username = "";
   var password = "";
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,6 +15,16 @@ function App() {
     const data =  Object.fromEntries(formData.entries());
     username = data.username;
     password = data.password;
+    var userCorrect = checkPassword(username, password);
+    if (userCorrect) {
+
+    } else {
+
+    }
+  }
+
+  function checkPassword(u, p) {
+    return false;
   }
    
 

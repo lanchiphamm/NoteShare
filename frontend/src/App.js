@@ -3,6 +3,11 @@ import Login from './Login';
 import Profile from './Profile';
 import SignUp from './SignUp';
 import Test from './Test';
+import Result from './Result';
+import { Thing } from './Main';
+import React, { createContext } from 'react';
+
+const Store = createContext();
 
 function App() {
 
@@ -22,6 +27,8 @@ function App() {
       break
     case "/test":
       component = <Test />
+    case "/result":
+      component = <Result />
       break
   }
 

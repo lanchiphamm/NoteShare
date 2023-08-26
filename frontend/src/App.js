@@ -1,7 +1,6 @@
-import './App.css';
-import Main from './pages/Main';
+import Main from './Main';
 import Login from './Login';
-
+import Profile from './Profile';
 
 function App() {
 
@@ -12,6 +11,9 @@ function App() {
       break
     case "/main":
       component = <Main />
+      break
+    case "/profile":
+      component = <Profile />
       break
   }
 

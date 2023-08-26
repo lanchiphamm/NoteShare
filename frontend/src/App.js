@@ -2,6 +2,7 @@ import Main from './Main';
 import Login from './Login';
 import Profile from './Profile';
 import SignUp from './SignUp';
+import Test from './Test';
 import Result from './Result';
 import { Thing } from './Main';
 import React, { createContext } from 'react';
@@ -59,6 +60,8 @@ function App() {
     case "/signup":
       component = <SignUp />
       break
+    case "/test":
+      component = <Test />
     case "/result":
       component = <Result />
       break

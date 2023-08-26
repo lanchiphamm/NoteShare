@@ -2,6 +2,11 @@ import Main from './Main';
 import Login from './Login';
 import Profile from './Profile';
 import SignUp from './SignUp';
+import Result from './Result';
+import { Thing } from './Main';
+import React, { createContext } from 'react';
+
+const Store = createContext();
 
 function App() {
 
@@ -18,6 +23,9 @@ function App() {
       break
     case "/signup":
       component = <SignUp />
+      break
+    case "/result":
+      component = <Result />
       break
   }
 

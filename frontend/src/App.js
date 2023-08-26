@@ -1,7 +1,6 @@
 import './App.css';
 
 
-
 function App() {
   var username = "";
   var password = "";
@@ -12,14 +11,10 @@ function App() {
     const formData = new FormData(form);
   
     const data =  Object.fromEntries(formData.entries());
-    console.log(data);
     username = data.username;
     password = data.password;
-    console.log(username);
-    console.log(password);
-
   }
-  
+   
 
   return (
     <div className = "body">

@@ -1,6 +1,7 @@
 import Main from './Main';
 import Login from './Login';
 import Profile from './Profile';
+import SignUp from './SignUp';
 
 function App() {
 
@@ -14,6 +15,9 @@ function App() {
       break
     case "/profile":
       component = <Profile />
+      break
+    case "/signup":
+      component = <SignUp />
       break
   }
 

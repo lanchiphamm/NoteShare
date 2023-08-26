@@ -30,6 +30,9 @@ function Login() {
     return true;
   }
    
+  function signUp() {
+    window.location.replace("/signup");
+  }
 
   return (
     <div className = "body">
@@ -53,6 +56,10 @@ function Login() {
           <br />
           <button type="submit">Log in</button>
         </form>
+      </div>
+
+      <div className ="sign-up-btn">
+        <button onClick={signUp}>or Sign Up</button>
       </div>
 
       <Popup trigger={isOpen} setTrigger= {setIsOpen}>

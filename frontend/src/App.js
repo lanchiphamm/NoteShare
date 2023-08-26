@@ -1,50 +1,37 @@
-import './App.css';
+import Main from './Main';
+import Login from './Login';
+import Profile from './Profile';
+import SignUp from './SignUp';
+import Result from './Result';
+import { Thing } from './Main';
+import React, { createContext } from 'react';
 
-
+const Store = createContext();
 
 function App() {
-  var username = "";
-  var password = "";
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-  
-    const data =  Object.fromEntries(formData.entries());
-    console.log(data);
-    username = data.username;
-    password = data.password;
-    console.log(username);
-    console.log(password);
-
+  let component
+  switch (window.location.pathname) {
+    case "/":
+      component = <Login />
+      break
+    case "/main":
+      component = <Main />
+      break
+    case "/profile":
+      component = <Profile />
+      break
+    case "/signup":
+      component = <SignUp />
+      break
+    case "/result":
+      component = <Result />
+      break
   }
-  
 
   return (
-    <div className = "body">
-      <div className="heading">
-        <h1>Welcome to NoteShare</h1>
-      </div>
-
-      <div className = "login">
-        <h2>Login</h2>
-      </div>
-
-      <div className = "login-box">
-        <form method="login" onSubmit={handleSubmit}>
-          <label>
-            Username: <input name="username" />
-          </label>
-          <br />
-          <label>
-            Password: <input name="password" />
-          </label>
-          <br />
-          <button type="submit">Log in</button>
-        </form>
-      </div>
-
+    <div>
+      {component}
     </div>
   );
 }

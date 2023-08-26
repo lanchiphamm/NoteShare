@@ -2,6 +2,7 @@ import Main from './Main';
 import Login from './Login';
 import Profile from './Profile';
 import SignUp from './SignUp';
+import Test from './Test';
 
 function App() {
 
@@ -18,6 +19,9 @@ function App() {
       break
     case "/signup":
       component = <SignUp />
+      break
+    case "/test":
+      component = <Test />
       break
   }
 

@@ -1,4 +1,6 @@
 import './SignUp.css';
+import loginService from './services/login'
+import Notification from './components/Notification';
 
 function SignUp () {
     var username = "";

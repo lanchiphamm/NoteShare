@@ -7,7 +7,11 @@ loginRouter.post('/', async (request, response) => {
   const user = await User.findOne({ username })
   const passwordCorrect = user === null
     ? false
-    : await compare(password, user.password)
+    : (password === user.password)
+
+  if (!user) return response.status(400).json({
+    error: 'username does not exist'
+  })
 
   if (!(user && passwordCorrect)) {
     return response.status(401).json({
@@ -22,7 +26,7 @@ loginRouter.post('/', async (request, response) => {
 
   response
     .status(200)
-    .send({ token, username: user.username, name: user.name })
+    .send({ username: user.username, password: user.password })
 })
 
 module.exports = loginRouter

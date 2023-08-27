@@ -83,7 +83,7 @@ function Login() {
       <Notification message={errorMessage} />
 
       <div className = "login-box">
-        <form method="login" onSubmit={handleLogin}>
+        <form method="login" onSubmit={handleSubmit}>
         <div>
         username
           <input

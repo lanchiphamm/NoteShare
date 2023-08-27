@@ -3,21 +3,68 @@ cd.Login {
   }
   
   body {
-    background-color: #FFE5E5;
+    background-color: #FBD0D0;
+    color:#534859;
   }
   
   .heading {
     text-align: center; 
+    font-weight: bold;
+    font-size: 200%;
   }
   
   .login {
     text-align: center; 
+    font-size: 150%;
   }
   
   .login-box {
     text-align: center; 
+    position: center;
+    border: 1px white;
+    background-color: #FBF0E8;
+    border-style: solid;
+    padding: 50px;
+    margin: 0 35% 0 35%;
   }
-  
-  .sign-up-btn {
+
+  label{
+    display: inline-block;
+    /* float: left; */
+    clear: left;
+    /* width: 250px; */
+    text-align: center;
+    padding: 5px;
+  }
+
+  input {
+    display: inline-block;
+    size: 10px;
+    /* float: right; */
+  }
+
+  button {
     text-align: center; 
+    font-weight: bold;
+    position: center;
+    background-color: #534859;
+    color: white;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+  }
+
+  .submit-button {
+    position: center;
+    margin: 10% 0 0 0;
+  }
+
+  .sign-up-btn {
+    text-align: center;
+    position: center;
+    margin: 30px;
+  }
+
+  .field {
+    padding: 10px;
   }

@@ -6,10 +6,9 @@ import Notification from './components/Notification';
 
 
 function Login() {
-  // var username = "";
-  // var password = "";
+  const [isOpen, setIsOpen] = useState(false);
+  
   const [errorMessage, setErrorMessage] = useState(null)
-
   const [user, setUser] = useState(null)
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('') 
@@ -27,6 +26,7 @@ function Login() {
       window.location.replace("/main");
 
     } catch (error) {
+      setIsOpen(true)
       if (error.response.request.status === 400) {
         setErrorMessage('Username does not exits. Try signing up?')
       } else if (error.response.request.status === 401) {
@@ -41,28 +41,6 @@ function Login() {
   useEffect(() => {
     window.localStorage.setItem('USERNAME', username)
   }, [username])
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const formData = new FormData(form);
-  
-  //   const data =  Object.fromEntries(formData.entries());
-  //   username = data.username;
-  //   password = data.password;
-  //   console.log(username);
-  //   var userCorrect = checkPassword(username, password);
-    
-  //   if (userCorrect) {
-  //     window.location.replace("/main");
-  //   } else {
-  //     setIsOpen(true);
-  //   }
-  // }
-
-  // function checkPassword(u, p) {
-  //   return true;
-  // }
    
   function signUp() {
     window.location.replace("/signup");
@@ -82,12 +60,11 @@ function Login() {
         <h2>Login</h2>
       </div>
 
-      <Notification message={errorMessage} />
-
       <div className = "login-box">
-        <form method="login" onSubmit={handleSubmit}>
+      <Notification message={errorMessage} />
+        <form method="login" onSubmit={handleLogin}>
         <div>
-        username
+        <label>Username</label>
           <input
           type="text"
           value={username}
@@ -96,7 +73,7 @@ function Login() {
         />
         </div>
         <div>
-          password
+          <label>Password</label>
             <input
             type="password"
             value={password}
@@ -104,17 +81,21 @@ function Login() {
             onChange={({ target }) => setPassword(target.value)}
             />
         </div>
-        <button type="submit">Login</button>
+        <div>
+          <button class="submit-button" type="submit">Login</button>
+        </div>
         </form>
       </div>
 
       <div className ="sign-up-btn">
-        <button onClick={signUp}>or Sign Up</button>
+        <text>Don't have an account yet?</text>
+        <br />
+        <button onClick={signUp}>Sign Up</button>
       </div>
 
-      {/* <Popup trigger={isOpen} setTrigger= {setIsOpen}>
+      <Popup trigger={isOpen} setTrigger= {setIsOpen}>
         <h3>Login Failed</h3>
-      </Popup> */}
+      </Popup>
 
     </div>
   );

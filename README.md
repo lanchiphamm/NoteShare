@@ -1,1 +1,1 @@
-# ignition
+# Ignition Hackathon

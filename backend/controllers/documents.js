@@ -35,9 +35,9 @@ module.exports = (upload) => {
   documentRouter.route('/')
     .post(upload.single('file'), async (req, res, next) => {
       // check for existing documents
-      console.log(req.body)
+      console.log(req.body.filename)
       console.log("is it here?")
-      Document.findOne({ caption: req.body.caption})
+      await Document.findOne({ caption: req.body.caption})
         .then((document) => {
           console.log(document)
           if (document) {

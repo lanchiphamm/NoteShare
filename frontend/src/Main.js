@@ -15,8 +15,8 @@ function Main () {
     ]
 
     const cpscNumbers = [
-        {label: 103, value: 103},
         {label: 110, value: 110},
+        {label: 330, value: 330},
     ]
 
     const statNumbers = [

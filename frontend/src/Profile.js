@@ -17,6 +17,7 @@ function Profile () {
     const [school, setSchool] = useState('')
     const [major, setMajor] = useState('')
     const [year, setYear] = useState(1)
+    const [courses, setCourses] = useState([])
 
     let retrieved
     useEffect(() => {
@@ -29,18 +30,19 @@ function Profile () {
             const dataFrombase = JSON.stringify(userInfo[0])
             console.log(dataFrombase )
             retrieved = JSON.parse(dataFrombase )
-            setName(retrieved.name)
+            setName(retrieved.realname)
             setSchool(retrieved.school)
             setMajor(retrieved.major)
             setYear(retrieved.yearlevel)
             setUser(data)
+            setCourses(retrieved.courses)
           })
       })
 
     return (
         <>
             <Navbar />
-            <h1 id="greet">Hello {username}!</h1>
+            <h1 id="greet">Hello {name}!</h1>
             <div id="pfp">
                     <br/>
             </div>    
@@ -50,6 +52,7 @@ function Profile () {
                 <h2>School: {school}</h2>
                 <h2>Year: {year}</h2>
                 <h2>Major: {major}</h2>
+                <h2>Course: {courses}</h2>
             </div>
             
         </>

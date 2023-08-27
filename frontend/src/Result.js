@@ -10,6 +10,12 @@ const getAll = () => {
     return request.then(response => response.data)
 }
 
+// const allUrl = 'http://localhost:3001/documents/'
+// const getFile = (filename) => {
+//     const request = axios.get(baseUrl + username)
+//     return request.then(response => response.data)
+// }
+
 function Result () {
 
     const [courseCode, setCourseCode] = useState("");
@@ -73,6 +79,7 @@ function Result () {
         });
     }
 
+    const url = "http://localhost:3001/documents/document/"
     return (
         <div>
             <Navbar />
@@ -90,13 +97,18 @@ function Result () {
             <div id='document'>
                 <ol>
                     {docs.map(doc =>
-                        <li>
+                        {const name = doc.filename;
+                            console.log(name)
+                        return (
+                        <li id='resultList'>
                         <img src={require('./document.png')} />
                         <text id='info'>
-                            Course: {courseCode} || File: {doc.filename}
+                            Course: {courseCode} || 
+                            File: &nbsp;
+                            <a href="http://localhost:3001/documents/document/96a53247e4fa4d817028c3bd4bc7ae8f.pdf" target="_blank">{doc.filename}</a>
                             <br />
                         </text>
-                        </li>
+                        </li>)}
                     )}
                 </ol>
             </div>

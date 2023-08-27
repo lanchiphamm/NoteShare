@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import { useState, useEffect } from 'react';
 import axios from "axios";
-
+import './Result.css';
 
 function Result () {
 

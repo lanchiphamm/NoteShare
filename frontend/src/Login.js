@@ -43,12 +43,7 @@ function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-  
-    const data =  Object.fromEntries(formData.entries());
-    setUsername(data.username);
-    setPassword(data.password);
+    
     var userCorrect = checkPassword(username, password);
     
     if (userCorrect) {

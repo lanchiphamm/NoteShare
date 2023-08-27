@@ -3,10 +3,18 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import './Result.css';
 
+const baseUrl = 'http://localhost:3001/documents/files'
+
+const getAll = () => {
+    const request = axios.get(baseUrl)
+    return request.then(response => response.data)
+}
+
 function Result () {
 
     const [courseCode, setCourseCode] = useState("");
     const [username, setUsername] = useState("");
+    const [docs, setDocs] = useState([]);
 
     useEffect(() => {
         const data = window.localStorage.getItem('COURSE-CODE');
@@ -18,6 +26,15 @@ function Result () {
         if ( data !== null ) setUsername(data)
     }, [])
 
+    useEffect(() => {
+        getAll()
+          .then(initialDocs => {
+            console.log(JSON.parse(JSON.stringify(initialDocs)).files)
+            setDocs(JSON.parse(JSON.stringify(initialDocs)).files)
+          })
+      }, [])
+    
+      console.log(docs.type)
 
     const [ file, setFile ] = useState(null);
     const [ progress, setProgress] = useState({ started: false, pc: 0 });
@@ -59,15 +76,30 @@ function Result () {
     return (
         <div>
             <Navbar />
-            <h1>Result Page</h1>
-            <h2>Showing notes for {courseCode}</h2>
-
-            <input onChange={ (e) => { setFile(e.target.files[0]) } } type="file"/>
-            
-            <button onClick={ handleUpload }>Upload</button>
-
-            { progress.started && <progress max="100" value={progress.pc}></progress> }
-            { msg && <span>{msg}</span> }
+            <h1 id='result-page'>Result Page</h1>
+            <h2 id='showing-result'>Showing notes for {courseCode}</h2>
+            <div id='upload'>
+                <text id='upload-text'>Would you like to contribute your notes for this course?</text>
+                <br ></br>
+                <input onChange={ (e) => { setFile(e.target.files[0]) } } type="file"/>
+                <button onClick={ handleUpload }>Upload</button>
+                { progress.started && <progress max="100" value={progress.pc}></progress> }
+                <br />
+                { msg && <span>{msg}</span> }
+            </div>
+            <div id='document'>
+                <ol>
+                    {docs.map(doc =>
+                        <li>
+                        <img src={require('./document.png')} />
+                        <text id='info'>
+                            Course: {courseCode} || File: {doc.filename}
+                            <br />
+                        </text>
+                        </li>
+                    )}
+                </ol>
+            </div>
         </div>
 
     );

@@ -1,5 +1,5 @@
 import './Login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from './components/Popup.js';
 import loginService from './services/login'
 import Notification from './components/Notification';
@@ -8,8 +8,6 @@ import Notification from './components/Notification';
 function Login() {
   // var username = "";
   // var password = "";
-  const [isOpen, setIsOpen] = useState(false);
-  
   const [errorMessage, setErrorMessage] = useState(null)
 
   const [user, setUser] = useState(null)
@@ -24,7 +22,7 @@ function Login() {
         username, password
       })
       setUser(user)
-      setUsername('')
+      setUsername(username)
       setPassword('')
       window.location.replace("/main");
 
@@ -40,27 +38,31 @@ function Login() {
     }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-  
-    const data =  Object.fromEntries(formData.entries());
-    username = data.username;
-    password = data.password;
-    console.log(username);
-    var userCorrect = checkPassword(username, password);
-    
-    if (userCorrect) {
-      window.location.replace("/main");
-    } else {
-      setIsOpen(true);
-    }
-  }
+  useEffect(() => {
+    window.localStorage.setItem('USERNAME', username)
+  }, [username])
 
-  function checkPassword(u, p) {
-    return true;
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const formData = new FormData(form);
+  
+  //   const data =  Object.fromEntries(formData.entries());
+  //   username = data.username;
+  //   password = data.password;
+  //   console.log(username);
+  //   var userCorrect = checkPassword(username, password);
+    
+  //   if (userCorrect) {
+  //     window.location.replace("/main");
+  //   } else {
+  //     setIsOpen(true);
+  //   }
+  // }
+
+  // function checkPassword(u, p) {
+  //   return true;
+  // }
    
   function signUp() {
     window.location.replace("/signup");
@@ -106,9 +108,9 @@ function Login() {
         <button onClick={signUp}>or Sign Up</button>
       </div>
 
-      <Popup trigger={isOpen} setTrigger= {setIsOpen}>
+      {/* <Popup trigger={isOpen} setTrigger= {setIsOpen}>
         <h3>Login Failed</h3>
-      </Popup>
+      </Popup> */}
 
     </div>
   );

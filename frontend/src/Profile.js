@@ -9,28 +9,29 @@ const getUser = (username) => {
     return request.then(response => response.data)
 }
 
-function Profile (props) {
+function Profile () {
     const [user, setUser] = useState(null)
     const [username, setUsername] = useState('')
     const [name, setName] = useState('')
     const [school, setSchool] = useState('')
     const [major, setMajor] = useState('')
-    const [year, setYear] = useState()
-
-    let userName = props.username
-    console.log(userName)
+    const [year, setYear] = useState(1)
 
     let retrieved
     useEffect(() => {
-        getUser('chi')
+        const data = window.localStorage.getItem('USERNAME');
+        if ( data !== null ) setUsername(data)
+
+        console.log(username)
+        getUser(username)
           .then(userInfo => {
             const data = JSON.stringify(userInfo[0])
+            console.log(data)
             retrieved = JSON.parse(data)
-            setUsername(retrieved.username)
             setName(retrieved.name)
             setSchool(retrieved.school)
             setMajor(retrieved.major)
-            setYear(retrieved.year)
+            setYear(retrieved.yearlevel)
             setUser(data)
           })
       }, [])
@@ -40,6 +41,8 @@ function Profile (props) {
             <Navbar />
             <h1>Profile Page</h1>
             <h2>Username: {username}</h2>
+            <h2>School: {school}</h2>
+            <h2>Year: {year}</h2>
         </>
     );
 }

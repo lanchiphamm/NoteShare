@@ -32,7 +32,7 @@ module.exports = (upload) => {
   /*
       POST: Upload a single document/file to Document collection
   */
-  documentRouter.route('/upload')
+  documentRouter.route('/')
     .post(upload.single('file'), async (req, res, next) => {
       // check for existing documents
       console.log(req.body)

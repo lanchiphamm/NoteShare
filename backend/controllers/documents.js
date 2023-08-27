@@ -2,6 +2,11 @@ const documentRouter = require('express').Router()
 const Document = require('../models/document')
 const User = require('../models/user')
 
+const config = require('../utils/config')
+const url = config.MONGODB_URI
+const mongoose = require('mongoose');
+const Grid = require('gridfs-stream');
+
 documentRouter.get('/', async (request, response) => {
   const document = await Document
   .find({}).populate('user', { username: 1, name: 1 })
@@ -9,51 +14,40 @@ documentRouter.get('/', async (request, response) => {
   response.json(document)
 })
 
-const config = require('../utils/config')
-const url = config.MONGODB_URI
-const mongoose = require('mongoose');
-const Grid = require('gridfs-stream');
-
 module.exports = (upload) => {
   const connect = mongoose.createConnection(url, 
     { useNewUrlParser: true, useUnifiedTopology: true }
-    );
-  console.log(`its here`)
+  );
+
   let gfs;
-  console.log(`and here`)
+
   connect.once('open', () => {
       // initialize stream
-      grf = Grid(connect.db, mongoose.mongo);
       gfs = new mongoose.mongo.GridFSBucket(connect.db, {
           bucketName: 'uploads'
       });
       console.log(`connected with gfs`)
-      console.log('yeh')
-    
-      console.log(gfs.find().readBufferedDocuments)
   });
-  // connect.once('open', () => {
-  //   // Init stream
-  //   gfs = Grid(connect.db, mongoose.mongo);
-  //   gfs.collection('uploads');
-  // });
 
   /*
       POST: Upload a single document/file to Document collection
   */
-  documentRouter.route('/')
-    .post(upload.single('file'), (req, res, next) => {
+  documentRouter.route('/upload')
+    .post(upload.single('file'), async (req, res, next) => {
       // check for existing documents
-      Document.findOne({ filename: req.body.filename})
+      console.log(req.body)
+      console.log("is it here?")
+      Document.findOne({ caption: req.body.caption})
         .then((document) => {
-
+          console.log(document)
           if (document) {
             return res.status(200).json({
               success: false,
               message: 'Document already exists',
             });
           }
-
+          
+          console.log(req.body.filename)
           let newDocument = new Document({
             caption: req.body.caption,
             filename: req.file.filename,
@@ -72,6 +66,7 @@ module.exports = (upload) => {
         .catch(err => res.status(502).json(err));
     })
     .get((req, res, next) => {
+      console.log("here instead")
       Document.find({})
         .then(documents => {
           res.status(200).json({
@@ -160,7 +155,6 @@ module.exports = (upload) => {
         });
 
         res.status(200).json({
-          success: true,
           files,
         });
       });

@@ -6,11 +6,26 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  password: String,
-  name: String,
-  school: String,
-  major: String,
-  yearlevel: Number,
+  password: {
+    type: String,
+    default: ''
+  },
+  name: {
+    type: String,
+    default: ''
+  },
+  school: {
+    type: String,
+    default: ''
+  },
+  major: {
+    type: String,
+    default: ''
+  },
+  yearlevel: {
+    type: Number,
+    default: 0
+  },
   courses: [String],
   document: {
     type: mongoose.Schema.Types.ObjectId,

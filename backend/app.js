@@ -4,6 +4,7 @@ const cors = require('cors')
 const app = express()
 const createError = require('http-errors');
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser');
 
 // Routers
 const usersRouter = require('./controllers/users')
@@ -57,6 +58,7 @@ const upload = multer({ storage })
 app.set('view engine', 'jade');
 app.use(express.static('build'))
 app.use(express.json())
+app.use(cookieParser());
 app.use('/documents', documentRouter(upload))
 app.use('/users', usersRouter)
 app.use ('/login', loginRouter)

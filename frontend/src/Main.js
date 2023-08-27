@@ -1,12 +1,13 @@
 import Navbar from "./Navbar";
 import './Main.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function Main () {
 
     const [subject, setSubject] = useState("CPSC");
-    const [number, setNumber] = useState(0);
+    const [number, setNumber] = useState(103);
+    const [courseCode, setCourseCode] = useState("");
 
     const mathNumbers = [
         {label: 100, value: 100},
@@ -44,8 +45,14 @@ function Main () {
     }
 
     function handleSubmit(e) {
+        const code = subject + " " + number;
+        setCourseCode(code);
         window.location.replace("/result");
     }
+
+    useEffect(() => {
+        window.localStorage.setItem('COURSE-CODE', courseCode)
+    }, [courseCode])
 
     return (
         <>

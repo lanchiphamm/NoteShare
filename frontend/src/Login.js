@@ -68,6 +68,10 @@ function Login() {
     window.location.replace("/signup");
   }
 
+  useEffect(() => {
+    window.localStorage.setItem('USERNAME', username)
+  }, [username])
+
   return (
     <div className = "body">
       <div className="heading">
@@ -81,7 +85,7 @@ function Login() {
       <Notification message={errorMessage} />
 
       <div className = "login-box">
-        <form method="login" onSubmit={handleLogin}>
+        <form method="login" onSubmit={handleSubmit}>
         <div>
         username
           <input

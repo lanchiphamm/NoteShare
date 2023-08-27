@@ -1,5 +1,5 @@
 import './Login.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Popup from './components/Popup.js';
 import loginService from './services/login'
 import Notification from './components/Notification';
@@ -8,6 +8,7 @@ import Notification from './components/Notification';
 function Login() {
   // var username = "";
   // var password = "";
+
   const [isOpen, setIsOpen] = useState(false);
   
   const [errorMessage, setErrorMessage] = useState(null)
@@ -46,9 +47,8 @@ function Login() {
     const formData = new FormData(form);
   
     const data =  Object.fromEntries(formData.entries());
-    username = data.username;
-    password = data.password;
-    console.log(username);
+    setUsername(data.username);
+    setPassword(data.password);
     var userCorrect = checkPassword(username, password);
     
     if (userCorrect) {
@@ -65,6 +65,10 @@ function Login() {
   function signUp() {
     window.location.replace("/signup");
   }
+
+  useEffect(() => {
+    window.localStorage.setItem('USERNAME', username)
+  }, [username])
 
   return (
     <div className = "body">

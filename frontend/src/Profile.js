@@ -22,19 +22,19 @@ function Profile () {
         const data = window.localStorage.getItem('USERNAME');
         if ( data !== null ) setUsername(data)
 
-        console.log(username)
+        console.log(data)
         getUser(username)
           .then(userInfo => {
-            const data = JSON.stringify(userInfo[0])
-            console.log(data)
-            retrieved = JSON.parse(data)
+            const dataFrombase = JSON.stringify(userInfo[0])
+            console.log(dataFrombase )
+            retrieved = JSON.parse(dataFrombase )
             setName(retrieved.name)
             setSchool(retrieved.school)
             setMajor(retrieved.major)
             setYear(retrieved.yearlevel)
             setUser(data)
           })
-      }, [])
+      })
 
     return (
         <>

@@ -1,0 +1,54 @@
+#course-selection {
+    text-align: center;
+    position: center;
+    font-size: 400%;
+    padding: 20px 0 5px 0;
+}
+
+#subject {
+    text-align: center;
+    position: center;
+    font-size: 250%;
+    color: white;
+}
+
+#selection {
+    display: flexbox;
+    padding: 0 15% 0 15%;
+}
+
+select {
+    width: 150px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.select-course {
+    float: left;
+    padding: 20px 30 5px 30px;
+}
+
+.select-number {
+    float: right;
+    padding: 20px 30 5px 30px;
+}
+#select-label {
+    font-size: 150%;
+}
+
+.search-btn {
+    padding: 80px;
+}
+
+#search {
+    clear: left;
+    float: left;
+    left: 40%;
+    position: relative;
+    min-width: 100px;
+    width: 20%;
+    height: 40px;
+    font-size: 120%;
+}
+
+

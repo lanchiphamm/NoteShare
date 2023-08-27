@@ -21,7 +21,7 @@ function SignUp () {
     return (
         <>
         <div className = "signup">
-            <h2>SignUp Page</h2>
+            <h2>Sign Up</h2>
         </div>
         
 
@@ -35,7 +35,7 @@ function SignUp () {
                 Password: <input name="password" />
             </label>
             <br />
-            <button type="submit">Sign up</button>
+            <button type="submit">Sign Up</button>
             </form>
       </div>
         </>

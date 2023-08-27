@@ -57,37 +57,36 @@ function Main () {
     return (
         <>
             <Navbar />
-            <h1>Course Selection</h1>
+            <h1 id='course-selection'>Course Selection</h1>
+            <h2 id='subject'>Search for Subject</h2>
+            <div id="selection">
+                <div className="select-course">
+                    <label id='select-label'>
+                        Select Course Code
+                        <select value={subject} onChange={handleSubject}>
+                            <option value="CPSC">CPSC</option>
+                            <option value="MATH">MATH</option>
+                            <option value="STAT">STAT</option>
+                        </select>
+                    </label>
+                </div>
 
-            <div className="subject">
-                <h2>Subject</h2>
-            </div>
-            <div className="select-course">
-                <label>
-                    Select Course Code
-                    <select value={subject} onChange={handleSubject}>
-                        <option value="CPSC">CPSC</option>
-                        <option value="MATH">MATH</option>
-                        <option value="STAT">STAT</option>
-                    </select>
-                </label>
-            </div>
-
-            <div className="select-number">
-                <label>
-                    Select Course Number
-                    <select value={number} onChange={handleNumber}>
-                        
-                        {returnArray(subject).map((option) => (
-                            <option value={option.value}>{option.label}</option>
-                        ))}
-    
-                    </select>
-                </label>
+                <div className="select-number">
+                    <label id='select-label'>
+                        Select Course Number
+                        <select value={number} onChange={handleNumber}>
+                            
+                            {returnArray(subject).map((option) => (
+                                <option value={option.value}>{option.label}</option>
+                            ))}
+        
+                        </select>
+                    </label>
+                </div>
             </div>
 
-            <div className ="submit-btn">
-                 <button onClick={handleSubmit}>Submit</button>
+            <div className ="search-btn">
+                 <button id='search' onClick={handleSubmit}>Search Database</button>
             </div>
 
             

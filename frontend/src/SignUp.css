@@ -3,7 +3,7 @@ cd.Login {
   }
   
   body {
-    background-color: #FFE5E5;
+    background-color: #FBD0D0;
   }
   
   .heading {
@@ -12,9 +12,27 @@ cd.Login {
   
   .signup {
     text-align: center; 
+    font-size: 150%;
   }
   
   .signup-box {
     text-align: center; 
+    position: center;
+    border: 1px white;
+    background-color: #FBF0E8;
+    border-style: solid;
+    padding: 50px;
+    margin: 0 35% 0 35%;
+  }
+
+  button {
+    text-align: center; 
+    font-weight: bold;
+    position: center;
+    background-color: #534859;
+    color: white;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
   }
   

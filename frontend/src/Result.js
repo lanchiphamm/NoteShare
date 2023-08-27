@@ -18,6 +18,7 @@ function Result () {
         if ( data !== null ) setUsername(data)
     }, [])
 
+
     const [ file, setFile ] = useState(null);
     const [ progress, setProgress] = useState({ started: false, pc: 0 });
     const [ msg, setMsg ] = useState(null);
@@ -54,6 +55,7 @@ function Result () {
             console.error(err);
         });
     }
+
     return (
         <div>
             <Navbar />
@@ -67,6 +69,7 @@ function Result () {
             { progress.started && <progress max="100" value={progress.pc}></progress> }
             { msg && <span>{msg}</span> }
         </div>
+
     );
 }
 

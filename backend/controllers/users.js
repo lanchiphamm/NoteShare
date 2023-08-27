@@ -3,7 +3,11 @@ const { request, response } = require('express')
 const User = require('../models/user')
 
 usersRouter.post('/', async (request, response) => {
-  const { username, password } = request.body
+  const { username, password, realname, 
+    school, 
+    major,
+    yearlevel,
+    courses } = request.body
 
   const user = await User.findOne({ username })
   console.log(user)
@@ -15,7 +19,12 @@ usersRouter.post('/', async (request, response) => {
   } else {
     const userNew = new User({
       username,
-      password
+      password,
+      realname, 
+      school, 
+      major,
+      yearlevel,
+      courses
     })
   
     const savedUser = await userNew.save()

@@ -46,7 +46,7 @@ function Profile () {
             </div>    
             <br/>
             <br/>
-            <div id = "info">
+            <div id = "user-info">
                 <h2>School: {school}</h2>
                 <h2>Year: {year}</h2>
                 <h2>Major: {major}</h2>

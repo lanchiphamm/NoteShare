@@ -7,7 +7,7 @@ import Notification from './components/Notification';
 
 function Login() {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const [errorMessage, setErrorMessage] = useState(null)
   const [user, setUser] = useState(null)
   const [username, setUsername] = useState('') 
@@ -45,10 +45,6 @@ function Login() {
   function signUp() {
     window.location.replace("/signup");
   }
-
-  useEffect(() => {
-    window.localStorage.setItem('USERNAME', username)
-  }, [username])
 
   return (
     <div className = "body">

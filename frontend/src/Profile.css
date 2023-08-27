@@ -1,0 +1,35 @@
+
+#greet {
+    position: relative;
+    padding-left: 70px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+
+#name {
+    display: inline-block;
+}
+
+#pfp {
+    box-sizing: border-box;
+    border: 2px solid none;
+    background-color: palevioletred;
+    padding: 40px;
+    border-radius: 100px;
+    margin: 0 89% 0 4%;
+}
+
+
+#info {
+    position: relative;
+    padding-left: 70px;
+    padding-top: 20px;
+    padding-right: 70px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    border: 2px solid none;
+    border-radius: 15px;
+    margin: 0 70% 0 4%;
+    background-color: antiquewhite;
+}
+

@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import "./Profile.css";
 // import { get } from "mongoose";
 const baseUrl = 'http://localhost:3001/users/'
 
@@ -39,10 +40,18 @@ function Profile () {
     return (
         <>
             <Navbar />
-            <h1>Profile Page</h1>
-            <h2>Username: {username}</h2>
-            <h2>School: {school}</h2>
-            <h2>Year: {year}</h2>
+            <h1 id="greet">Hello {username}!</h1>
+            <div id="pfp">
+                    <br/>
+            </div>    
+            <br/>
+            <br/>
+            <div id = "info">
+                <h2>School: {school}</h2>
+                <h2>Year: {year}</h2>
+                <h2>Major: {major}</h2>
+            </div>
+            
         </>
     );
 }
